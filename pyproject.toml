@@ -48,7 +48,7 @@ pytest-cov = "^2.4"
 pytest-flake8 = "^1.1"
 pytest-xdist = "^1.15"
 respx = "^0.20.0"
-importlib-metadata = "^4.12"
+importlib-metadata = "^6.7"
 pytest-timeout = "^2.1.0"
 async-case = { version = "^10.1.0", python = "~3.7" }
 
