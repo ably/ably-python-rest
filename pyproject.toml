@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ably"
-version = "2.0.2"
+version = "2.0.2rc3"
 description = "Python REST and Realtime client library SDK for Ably realtime messaging service"
 license = "Apache-2.0"
 authors = ["Ably <support@ably.com>"]
