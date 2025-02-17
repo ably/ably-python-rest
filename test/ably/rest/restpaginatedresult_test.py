@@ -31,7 +31,7 @@ class TestPaginatedResult(BaseAsyncTestCase):
         self.ably = await TestApp.get_ably_rest(use_binary_protocol=False)
         # Mocked responses
         # without specific headers
-        self.mocked_api = respx.mock(base_url='http://rest.ably.io')
+        self.mocked_api = respx.mock(base_url='http://main.realtime.ably.net')
         self.ch1_route = self.mocked_api.get('/channels/channel_name/ch1')
         self.ch1_route.return_value = Response(
             headers={'content-type': 'application/json'},
@@ -44,8 +44,8 @@ class TestPaginatedResult(BaseAsyncTestCase):
             headers={
                 'content-type': 'application/json',
                 'link':
-                    '<http://rest.ably.io/channels/channel_name/ch2?page=1>; rel="first",'
-                    ' <http://rest.ably.io/channels/channel_name/ch2?page=2>; rel="next"'
+                    '<http://main.realtime.ably.net/channels/channel_name/ch2?page=1>; rel="first",'
+                    ' <http://main.realtime.ably.net/channels/channel_name/ch2?page=2>; rel="next"'
             },
             body='[{"id": 0}, {"id": 1}]',
             status=200
@@ -55,11 +55,11 @@ class TestPaginatedResult(BaseAsyncTestCase):
 
         self.paginated_result = await PaginatedResult.paginated_query(
             self.ably.http,
-            url='http://rest.ably.io/channels/channel_name/ch1',
+            url='http://main.realtime.ably.net/channels/channel_name/ch1',
             response_processor=lambda response: response.to_native())
         self.paginated_result_with_headers = await PaginatedResult.paginated_query(
             self.ably.http,
-            url='http://rest.ably.io/channels/channel_name/ch2',
+            url='http://main.realtime.ably.net/channels/channel_name/ch2',
             response_processor=lambda response: response.to_native())
 
     async def asyncTearDown(self):
