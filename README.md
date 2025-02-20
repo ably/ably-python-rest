@@ -344,8 +344,8 @@ for the set of versions that currently undergo CI testing.
 
 ## Known Limitations
 
-Currently, this SDK only supports [Ably REST](https://ably.com/docs/rest) and realtime message subscription as documented above.
-However, you can use the [MQTT adapter](https://ably.com/docs/mqtt) to implement [Ably's Realtime](https://ably.com/docs/realtime) features using Python.
+Currently, this SDK only supports [Ably REST](https://ably.com/docs/rest#rest) and realtime message subscription as documented above.
+However, you can use the [MQTT adapter](https://ably.com/docs/mqtt) to implement [Ably's Realtime](https://ably.com/docs/realtime#realtime) features using Python.
 
 See [our roadmap for this SDK](roadmap.md) for more information.
 

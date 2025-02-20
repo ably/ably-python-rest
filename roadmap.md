@@ -14,8 +14,8 @@ That release will allow applications built against it to:
 
 That release will come with the following known limitations:
 
-- No resilience to single Ably endpoint failure. To be implemented under [Milestone 2: Realtime Connectivity Hardening](#milestone-2-realtime-connectivity-hardening).
-- No support for [Token authentication](https://ably.com/docs/core-features/authentication#token-authentication), meaning that it only supports authentication by directly using a 'raw' Ably API key ([Basic authentication](https://ably.com/docs/core-features/authentication#basic-authentication)). To be implemented under [Milestone 3: Token Authentication](#milestone-3-token-authentication).
+- No resilience to single Ably endpoint failure. To be implemented under [Milestone 2: Realtime Connectivity Hardening](#milestone-2-realtime-connectivity-hardening-).
+- No support for [Token authentication](https://ably.com/docs/auth/token), meaning that it only supports authentication by directly using a 'raw' Ably API key ([Basic authentication](https://ably.com/docs/auth/basic)). To be implemented under [Milestone 3: Token Authentication](#milestone-3-token-authentication-).
 - No capability to publish over the Realtime connection. To be implemented under [Milestone 4: Realtime Channel Publish](#milestone-4-realtime-channel-publish).
 - No capability to receive or publish member presence messages for a channel over the Realtime connection. To be implemented under [Milestone 5: Realtime Channel Presence](#milestone-5-realtime-channel-presence).
 
