@@ -101,8 +101,8 @@ class TestRestRequest(BaseAsyncTestCase, metaclass=VaryByProtocolTestsMetaclass)
             await ably.request('GET', '/time', version=Defaults.protocol_version)
         await ably.close()
 
-        default_endpoint = 'https://sandbox-rest.ably.io/time'
-        fallback_host = 'sandbox-a-fallback.ably-realtime.com'
+        default_endpoint = 'https://sandbox.realtime.ably-nonprod.net/time'
+        fallback_host = 'sandbox.a.fallback.ably-realtime-nonprod.com'
         fallback_endpoint = f'https://{fallback_host}/time'
         ably = await TestApp.get_ably_rest(fallback_hosts=[fallback_host])
         with respx.mock:

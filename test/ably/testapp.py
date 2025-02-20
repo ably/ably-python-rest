@@ -14,15 +14,15 @@ with open(os.path.dirname(__file__) + '/../assets/testAppSpec.json', 'r') as f:
     app_spec_local = json.loads(f.read())
 
 tls = (os.environ.get('ABLY_TLS') or "true").lower() == "true"
-rest_host = os.environ.get('ABLY_REST_HOST', 'sandbox-rest.ably.io')
-realtime_host = os.environ.get('ABLY_REALTIME_HOST', 'sandbox-realtime.ably.io')
+rest_host = os.environ.get('ABLY_REST_HOST', 'sandbox.realtime.ably-nonprod.net')
+realtime_host = os.environ.get('ABLY_REALTIME_HOST', 'sandbox.realtime.ably-nonprod.net')
 
-environment = os.environ.get('ABLY_ENV', 'sandbox')
+environment = os.environ.get('ABLY_ENV', 'nonprod:sandbox')
 
 port = 80
 tls_port = 443
 
-if rest_host and not rest_host.endswith("rest.ably.io"):
+if rest_host and not rest_host.endswith("realtime.ably-nonprod.net"):
     tls = tls and rest_host != "localhost"
     port = 8080
     tls_port = 8081

@@ -1,17 +1,8 @@
 class Defaults:
     protocol_version = "2"
-    fallback_hosts = [
-        "a.ably-realtime.com",
-        "b.ably-realtime.com",
-        "c.ably-realtime.com",
-        "d.ably-realtime.com",
-        "e.ably-realtime.com",
-    ]
 
-    rest_host = "rest.ably.io"
-    realtime_host = "realtime.ably.io"  # RTN2
     connectivity_check_url = "https://internet-up.ably-realtime.com/is-the-internet-up.txt"
-    environment = 'production'
+    endpoint = 'main'
 
     port = 80
     tls_port = 443
@@ -53,11 +44,34 @@ class Defaults:
             return "http"
 
     @staticmethod
-    def get_environment_fallback_hosts(environment):
+    def get_hostname(endpoint):
+        if "." in endpoint or "::" in endpoint or "localhost" in endpoint:
+            return endpoint
+
+        if endpoint.startswith("nonprod:"):
+            return endpoint[len("nonprod:"):] + ".realtime.ably-nonprod.net"
+
+        if endpoint == "main":
+            return "main.realtime.ably.net"
+
+        return endpoint + ".realtime.ably.net"
+
+    @staticmethod
+    def get_fallback_hosts(endpoint="main"):
+        if endpoint.startswith("nonprod:"):
+            root = endpoint.replace("nonprod:", "")
+            return [
+                root + ".a.fallback.ably-realtime-nonprod.com",
+                root + ".b.fallback.ably-realtime-nonprod.com",
+                root + ".c.fallback.ably-realtime-nonprod.com",
+                root + ".d.fallback.ably-realtime-nonprod.com",
+                root + ".e.fallback.ably-realtime-nonprod.com",
+            ]
+
         return [
-            environment + "-a-fallback.ably-realtime.com",
-            environment + "-b-fallback.ably-realtime.com",
-            environment + "-c-fallback.ably-realtime.com",
-            environment + "-d-fallback.ably-realtime.com",
-            environment + "-e-fallback.ably-realtime.com",
+            endpoint + ".a.fallback.ably-realtime.com",
+            endpoint + ".b.fallback.ably-realtime.com",
+            endpoint + ".c.fallback.ably-realtime.com",
+            endpoint + ".d.fallback.ably-realtime.com",
+            endpoint + ".e.fallback.ably-realtime.com",
         ]
